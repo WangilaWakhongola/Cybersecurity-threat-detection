@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  threat-detection:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: threat-detection-app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=5000
+      - API_DEBUG=False
+      - LOG_LEVEL=INFO
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks:
+      - threat-detection-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - data-volume
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  data-volume:
+    image: busybox
+    volumes:
+      - ./data:/data
+      - ./models:/models
+      - ./logs:/logs
+    command: echo "Data volumes ready"
+    networks:
+      - threat-detection-network
+
+networks:
+  threat-detection-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+  models-volume:
+  logs-volume:
