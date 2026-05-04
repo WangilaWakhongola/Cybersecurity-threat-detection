@@ -11,7 +11,7 @@ An **enterprise-grade, cloud-native threat detection platform** that provides re
 - 🌐 **Network Traffic Analysis** - Deep packet inspection
 - 📊 **Log Anomaly Detection** - ML-based threat hunting
 - 🔗 **Threat Intelligence Feeds** - Real-time threat data
-- ⚡ **Real-time Alerts** - Instant notification system
+-  **Real-time Alerts** - Instant notification system
 
 ### Platform Architecture
 - 🖥️ **Central Dashboard** - Web-based monitoring & analytics
