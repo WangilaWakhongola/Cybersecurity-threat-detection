@@ -2,7 +2,7 @@
 
 An **enterprise-grade, cloud-native threat detection platform** that provides real-time cybersecurity monitoring, threat intelligence, and automated response capabilities.
 
-## 🎯 Key Features
+##  Key Features
 
 ### Core Threat Detection
 - 🛡️ **Intrusion Detection System (IDS/IPS)** - Real-time threat identification
